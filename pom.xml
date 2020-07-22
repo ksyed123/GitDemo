@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>qaclickacademy</groupId>
+  <artifactId>Mavenjava</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <name>Mavenjava</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+  <!-- if there are 2 testng.xml files then we use profiles to switch btwn the files. create profiles,cmd mvn test -PRegression or -PSmoke -->
+  <profiles>
+  <profile> <!-- first profile which has testng.xml file -->
+  <id>Regression</id> <!-- here i created a profile with id Regression any name and pasted build code below -->
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.0.0-M4</version>
+          <configuration> <!-- if u wnt 2 execute testng xml file using maven then u have to paste these 4 configuration lines -->
+          <suiteXmlFiles>
+            <suiteXmlFile>testng.xml</suiteXmlFile>
+          </suiteXmlFiles>
+        </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+  </profile>
+  <profile> <!-- second profile which has testng2.xml file -->
+  <id>Smoke</id><!-- here i created a profile with id Smoke any name and pasted build code below -->
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.0.0-M4</version>
+          <configuration> <!-- if u wnt 2 execute testng xml file using maven then u have to paste these 4 configuration lines -->
+          <suiteXmlFiles>
+            <suiteXmlFile>testng2.xml</suiteXmlFile>
+          </suiteXmlFiles>
+        </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+  </profile>
+  
+  </profiles>
+  
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+  <dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>3.141.59</version>
+</dependency>
+
+<dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>7.1.0</version>
+    <scope>test</scope>
+</dependency>
+
+<dependency>
+    <groupId>io.rest-assured</groupId>
+    <artifactId>rest-assured</artifactId>
+    <version>4.3.0</version>
+    <scope>test</scope>
+</dependency>
+
+<dependency>
+    <groupId>io.appium</groupId>
+    <artifactId>java-client</artifactId>
+    <version>7.3.0</version>
+</dependency>
+
+  
+  
+  
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
